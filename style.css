@@ -99,19 +99,19 @@
             margin-top: 50px;
         }
         
-        .carts {
-            max-width: 1029px;
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            flex-direction: column;
-            align-items: baseline;
-            gap: 8px;
-            line-height: 36px;
-            /* Smooth transition */
-            transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
-        }
+.carts {
+    max-width: 1029px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: baseline;
+    gap: 8px;
+    line-height: 36px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+    height: 300px;
+}
         
         .carts:hover {
             transform: translateY(-8px) scale(1.02);
