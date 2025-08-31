@@ -32,9 +32,7 @@ allblogs.addEventListener("click", (event) => {
 let createer = document.getElementById("createer-form")
 let edit;
 let delet;
-// let editid;
-//  edit.id = "editButton"
-// let deleyeid;
+
 
 
 async function displayallblog() {
@@ -45,9 +43,6 @@ async function displayallblog() {
         let array = await resolve.json()
         console.log(array.blogs);
         loader.classList.add("active")
-
-
-
 
         array.blogs.forEach(blog => {
             let cart = document.createElement("div")
@@ -64,42 +59,25 @@ async function displayallblog() {
                 console.log(blog._id)
             })
 
-
             edit.addEventListener("click", () => {
                 editblogs(blog);
                 console.log(blog._id)
 
             })
-
-
             edit.id = "editButton"
             delet.id = "deleteButton"
-
-            // console.log(edit)
-
-
             subheading.innerText = blog.title
             title.innerText = `By ${blog.author} on ${new Date(blog.createdAt).toLocaleDateString()}`
             para.innerText = blog.content
-
-
             edit.innerText = "Edit"
             delet.innerText = "Delete"
-
-
             cart.appendChild(subheading)
             cart.appendChild(title)
             cart.appendChild(para)
-
-
             cart.appendChild(edit)
             cart.appendChild(delet)
-
-
             contnent.appendChild(cart)
         });
-
-
     } catch (error) {
         console.log(error);
         let falild = document.createElement("p");
@@ -109,35 +87,19 @@ async function displayallblog() {
         loader.classList.add("active")
     } finally {
         loader.classList.add("active");
-
-
     }
-
-
 }
-// document.getElementById("editButton")
 displayallblog()
-// console.log(edit)
-
-
-
-
-//    banner.classList.add("active")
 createer.addEventListener("submit", async (event) => {
     event.preventDefault()
-
-
     let Author = document.getElementById("Author").value
     let Title = document.getElementById("Title").value
     let Content = document.getElementById("Content").value
-    // console.log(Author);
     let data = {
         author: Author,
         content: Content,
         title: Title
     }
-
-
     try {
         let Response = await fetch("https://ewl-server.vercel.app/api/v1/blog/create", {
             method: 'POST',
@@ -145,49 +107,28 @@ createer.addEventListener("submit", async (event) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-
-
         })
-
-
-        // displayallblog()
-        // banner.classList.remove("active")
-
 
     } catch (error) {
         console.log(error);
     } finally {
-
-
         blogsCreater.classList.add("active")
         banner.classList.remove("active")
         loader.classList.add("active")
         window.location.reload();
-
     }
-
-
 })
 Cancle.addEventListener("click", (event) => {
     event.preventDefault()
     blogsCreater.classList.add("active")
     banner.classList.remove("active")
     window.location.reload();
-
-
-
-    // displayallblog()
-
-
-
-
 })
 
 
 CreateBlog.addEventListener("click", (event) => {
     event.preventDefault()
     loader.classList.remove("active")
-    // banner.style.display="none"
     loader.classList.remove("active")
 
     createer.style.display = "flex"
@@ -203,24 +144,7 @@ console.log(btn);
 
 async function deleteBlog(id) {
     confirmdelete.style.display = "flex"
-    //    try {
-    //        let res = await fetch("https://ewl-server.vercel.app/api/v1/blog/deleteById", {
-    //            method: 'POST',
-    //            headers: {
-    //                'Content-Type': 'application/json'
-    //            },
-    //            body: JSON.stringify({
-    //                id
-    //            }),
-    //        })
-    //        let result = await res.json()
-    //        console.log(await result)
-    //    } catch (error) {
-    //        console.log(error);
-    //    } finally {
-    //        window.location.reload();
 
-    //    }
     deleteBlogConfirm.addEventListener("click", async () => {
         try {
             let res = await fetch("https://ewl-server.vercel.app/api/v1/blog/deleteById", {
@@ -239,22 +163,16 @@ async function deleteBlog(id) {
         } finally {
             confirmdelete.classList.add("active")
             window.location.reload();
-
         }
-
-
     })
 
 }
 async function editblogs(blog) {
-    // blogsCreater.classList.remove("active")
     pageheading.innerText = "Update Blog"
-    pageheading.style.textAlign = "center"; // or "left", "right"
+    pageheading.style.textAlign = "center"; 
     contnent.style.display = "none"
     updateBlog.style.display = "block"
-    // banner.classList.add("active")
-    // createer.style.display = "block"
-    // try {
+
     let idas = blog._id
 
     let input = document.createElement("input")
@@ -316,19 +234,14 @@ async function editblogs(blog) {
 
 
         } finally {
-            // contnent.style.display = "block"
-            // updateBlog.style.display = "none"
+
             window.location.reload();
 
         }
     })
 
 
-    // input.value = blog.author
-    // input1.value = blog.content
-    // input2.value = blog.title
-
-    // let result = await res.json()
+    
 
     updateBlog.appendChild(lable)
     updateBlog.appendChild(input)
